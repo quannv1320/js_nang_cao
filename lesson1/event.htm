@@ -1,0 +1,12 @@
+<input type="text" style="outline: none;">
+
+<script>
+    document.querySelector('input').onfocus = function(){
+        console.log("su kien onforcus");
+        this.style.border = "1px solid red";
+    }
+    document.querySelector('input').onblur = function(){
+        console.log("su kien onblur");
+        this.style.border = "1px solid black";
+    }
+</script>

@@ -1,0 +1,34 @@
+<style>
+	.user_item{
+		color: green;
+		text-decoration: underline;
+		cursor: pointer;
+	}
+</style>
+<h1>Danh sach</h1>
+<div class="target">
+	
+</div>
+
+<script>
+	var user = [
+		{id: 1, name:"Quan Nguyen", gender: 1},
+		{id: 2, name:"Quynh Thi", gender: 2},
+		{id: 3, name:"Nam Tran", gender: 2},
+		{id: 4, name:"Thai Vu", gender: 1},
+
+	];
+	var target = document.querySelector(".target");
+
+	for (var i = 0; i < user.length; i++) {
+		var gt;
+		if(user[i].gender == 1){
+			gt = "nam";
+		}else{
+			gt = "nu";
+		}
+		document.write(user[i].id + "-" + user[i].name + "-" + gt + "<br>");
+	}
+
+
+</script>

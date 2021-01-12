@@ -1,0 +1,26 @@
+<style>
+	#target{
+		border: 1px solid #000;
+		min-height: 300px;
+	}
+	.title{
+		color: red;
+		font-family: arial;
+	}
+</style>
+
+<div id="target">
+	
+</div>
+
+
+<script>
+	var target = document.querySelector("#target");
+	var h2El = document.createElement("h2");
+
+	h2El.innerText = "Hello World";
+	h2El.setAttribute("class", "title");
+
+	target.appendChild(h2El);
+
+</script>

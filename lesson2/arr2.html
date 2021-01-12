@@ -1,0 +1,14 @@
+<script>
+	var arr = [2,2,6,3,8,11,17,8,17];
+	var result = { };
+	   for(i=0;i<arr.length;++i) 
+	   {
+	       if(!result[arr[i]])
+	           result[arr[i]]=0;
+	       ++result[arr[i]];
+	   }
+
+	for (var i in result){
+	console.log(i+":"+result[i]);
+	} 
+</script>

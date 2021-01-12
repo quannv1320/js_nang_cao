@@ -1,0 +1,81 @@
+<style>
+	.user_item{
+		color: green;
+		transition-duration: none;
+		cursor: pointer;
+	}
+</style>
+
+<div class="form">
+	<div>
+		<label for="">ID</label>
+		<input type="number" id="addUserID" value="" placeholder="">
+	</div>
+	<div>
+		<label for="">Name</label>
+		<input type="text" id="addUserText" value="" placeholder="">
+	</div>
+	<div>
+		<label for="">Gender</label>
+		<select name="" id="addUserGender">
+			<option value="1">male</option>
+			<option value="2">female</option>
+		</select>
+	</div>
+	<div>
+		<button type="button" id="addAction">
+			Add
+		</button>
+	</div>
+
+	<div class="target">
+		
+	</div>
+	
+
+</div>
+
+<script>
+	var users = [
+		{id: 1, name:"Quan Nguyen", gender: 1},
+		{id: 2, name:"Quynh Thi", gender: 2},
+		{id: 3, name:"Nam Tran", gender: 2},
+		{id: 4, name:"Thai Vu", gender: 1},
+	];
+	
+	var button = document.querySelector('#addAction');
+
+
+	for (var i = 0; i < users.length; i++) {
+		var gt;
+		if(users[i].gender == 1){
+			gt = "nam";
+		}else{
+			gt = "nu";
+		}
+		document.write(users[i].id + "-" + users[i].name + "-" + gt + "<br>");
+	}
+
+	button.onclick = function () {
+		var target = document.querySelector(".target");
+		var id = document.querySelector("#addUserID").value;
+		var name = document.querySelector("#addUserText").value;
+		var gender = document.querySelector("#addUserGender").value;
+
+		var gt;
+		if(gender == 1){
+			gt = 'male';
+		}else{
+			gt = 'female'
+		}
+		users.push({
+                id: id,
+                name: name,
+                gender: gender
+            	});
+		console.log(users);
+
+		// target.innerHTML = (`${id}-${name}-${gt}`);
+
+	}
+</script>

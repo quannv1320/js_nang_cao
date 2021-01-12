@@ -1,0 +1,30 @@
+--onclick--
+<button>Click here</button><br>
+<br>
+--onkeyup--
+<input type="text"><br>
+<h2></h2>
+<br>
+--onkeydow
+<button class="button">Click here</button>
+<br>
+<br>
+--onchange--
+<input type="text" class="input">
+<script>
+    document.querySelector('button').onclick = function () {
+        alert("Hello Quan")
+    }
+
+    document.querySelector('input').onkeyup = function () {
+        document.querySelector('h2').innerHTML = this.value;
+    }
+
+    document.querySelector('.input').onchange = function () {
+        alert("hello " + this.value);
+    }
+
+    document.querySelector('.button').onkeydown = function () {
+        this.style.color = "red";
+    }
+</script>

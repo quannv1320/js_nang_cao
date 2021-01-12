@@ -1,0 +1,11 @@
+<input type="number" id="jsnangcao" value="0">
+
+<script>
+    var defaultValue = 0;
+    setInterval(function () {
+        var theInput = document.querySelector('#jsnangcao');
+        theInput.nodeValue = defaultValue + 1;
+        defaultValue = defaultValue + 1;
+    },1000);
+    
+</script>

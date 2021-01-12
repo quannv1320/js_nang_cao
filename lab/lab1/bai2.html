@@ -1,0 +1,20 @@
+<style>
+	#txtInput{
+		display: block;
+		height: 30px;
+		line-height: 30px;
+		margin-bottom: 20px;
+		width: 200px;
+	}
+</style>
+
+<input type="text" id="txtInput" value="33691E">
+<h3>Input text</h3>
+
+<script>
+	let h3Text = document.querySelector("h3");
+	let txtInput = document.querySelector("#txtInput");
+	txtInput.onkeyup = function () {
+		h3Text.innerHTML = this.value;
+	}
+</script>
