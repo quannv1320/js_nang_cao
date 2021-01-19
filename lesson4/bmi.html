@@ -1,0 +1,20 @@
+<input type="text" id="weight" placeholder="Cân nặng">&nbsp;
+<input type="text" id="height" placeholder="Chiều cao">&nbsp;
+<input type="button" value="Enter">
+<br>
+<h3>Chỉ sổ BMI của bạn là: <span></span></h3>
+
+<script>
+    var height = document.querySelector('#height');
+    var weight = document.querySelector('#weight');
+    var output = document.querySelector('span');
+    var btn = document.querySelector('input[type=button]');
+
+    function BMI(height, weight) {
+        return Math.round((height / weight) * 1000) / 100;
+    }
+    btn.onclick = function() {
+        var result = BMI(height.value, weight.value);
+        output.innerText = result;
+    }
+</script>

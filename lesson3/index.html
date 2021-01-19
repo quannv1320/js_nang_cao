@@ -1,0 +1,63 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+
+
+
+
+
+<script>
+    // var quan = {
+    //     name: "Nguyen Van Quan",
+    //     rollNumber: "PH07132",
+    //     score: 6.9,
+    //     updateScore: function (newScore) {
+    //         this.score = newScore
+    //     },
+    //     toString: function () {
+    //         console.log(`Ho va ten: ${this.name} - MSSV: ${this.rollNumber}`)
+    //     }
+    // };
+    
+
+    // console.log(quan.score);
+    // quan.updateScore(8);
+    // console.log(quan.score);
+    // console.log(quan.toString());
+
+
+
+    var student = {
+        ma_sinh_vien: "PH07132",
+        ho_va_ten: "Nguyen Van Quan",
+        lop: "PT14301-UD",
+        ngay_nhap_hoc: moment("2018-7-15"),
+        diem_trung_binh: 8,
+        hoc_luc: "",
+        tinh_hoc_luc: function() {
+            if(this.diem_trung_binh < 5) {
+                this.hoc_luc = "Yếu"
+            }else if(this.diem_trung_binh < 7) {
+                this.hoc_luc = "Trung Bình"
+            }else if(this.diem_trung_binh) {
+                this.hoc_luc = "Khá"
+            }else{
+                this.hoc_luc = "Giỏi"
+            }
+
+            return this.hoc_luc;
+        },
+        ngay_ra_truong: function() {
+            var so_thang = moment().diff(moment("2019-7-15"), 'months')
+            console.log(so_thang);
+            if (so_thang > 28) {
+                console.log("Da ra truong")
+            } else {
+                con_lai = 28 - so_thang;
+                console.log(`Con lai ${con_lai} tháng mới ra được trường nhé !`);
+            }
+        },
+    }
+
+    console.log(student.tinh_hoc_luc());
+    console.log(student.ngay_ra_truong());
+
+</script>
