@@ -1,0 +1,26 @@
+<h2>Loading...</h2>
+
+<script>
+    var h2 = document.querySelector('h2');
+    function quaTrinhHoc(totalMark, time) {
+        return new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                if(totalMark >= 9){
+                    resolve(totalMark);
+                }else{
+                    reject('Khong du dieu kieun sv xuat sac')
+                }
+            }, time);
+        })
+    }
+
+    var diemTongKet = prompt("Nhap diem tong ket");
+    var time = prompt("Thoi gian delay");
+    quaTrinhHoc(parseInt(diemTongKet), parseInt(time))
+        .then(function (mark) {
+            h2.innerHTML = `Di singapore, vi diem tong ket = ${mark}`;
+        })
+        .catch(function (err) {
+            h2.innerHTML = err;
+        })
+</script>

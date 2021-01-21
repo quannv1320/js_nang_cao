@@ -1,0 +1,16 @@
+<script>
+    function setColorPerTime(color, time) {
+        return new Promise(function (resolve) {
+            setTimeout(() => {
+                document.querySelector('body').style.background = color;
+                resolve();
+            }, time);
+        })
+    }
+
+    setColorPerTime('yellow', 500)
+        .then(function () {
+            setColorPerTime('green', 500);
+        })
+        .catch();
+</script>

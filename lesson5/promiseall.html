@@ -1,0 +1,28 @@
+<script>
+    function promise1() {
+        return new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                console.log(1);
+                return resolve();
+            }, 3000);
+        });
+    };
+
+    function promise2() {
+        return new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                console.log(2);
+                return resolve();
+            }, 1000);
+        });
+    };
+
+    Promise.all([
+        promise1(),
+        promise2()
+    ])
+    .then(function (all) {
+        console.log(all[0]);
+        console.log(all[1])
+    })
+</script>
