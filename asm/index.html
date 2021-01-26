@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="header">
+        <ul class="menu"></ul>
+    </div>
+    <div class="content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên danh mục</th>
+                    <th>
+                        <a href="create_cate.html" class="btn btn-success">Tạo mới</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        //lấy danh sách danh mục
+        const apiUrl = "http://localhost:3000/";
+        fetch(`${apiUrl}Categories`)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (cates) {
+            //dùng vòng lặp để add thẻ html vào ul có class là menu
+            console.log(cates);
+            var content = ``;
+            cates.forEach(item => {
+                content += `<tr>
+                                <td>${item.id}</td>
+                                <td>${item.name}</td>
+                                <td>
+                                    <a href="" class="btn btn-primary">Sửa</a>
+                                    <a href="" class="btn btn-danger">Xóa</a>   
+                                </td>
+                            </tr>`
+            });
+            document.querySelector('tbody').innerHTML = content;
+        })
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thêm mới Bệnh Viện</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body onload="gethospitalsInfor()">
+    <!-- form tạo mới hospitals -->
+    <div class="container">
+        <br>
+        <h2>Cập nhật thông tin khách sạn</h2>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form onsubmit="return edithospitals()">
+                    <div class="form-group">
+                        <label for="">Tên bệnh viện</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ảnh logo</label>
+                        <input type="text" name="logo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Địa chỉ bệnh viện</label>
+                        <input type="text" name="address" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Số giường bệnh</label>
+                        <input type="text" name="bed_number" class="form-control" data-rule="required">
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-sm btn-primary">Lưu</button>&nbsp;
+                        <a href="index.html" class="btn btn-sm btn-danger">Hủy</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const apiUrl = 'https://5f36249d5b91f60016ca55f8.mockapi.io/hospitals';
+        var benhvienInfo = {};
+        var id = null;
+        function gethospitalsInfor() {
+            // 1. lấy tham số id trên đường dẫn
+            const urlParams = new URLSearchParams(window.location.search);
+            id = urlParams.get('id');
+            // 2. gửi request lên mock api để lấy thông tin của khách sạn về
+            const gethospitalsInfor = apiUrl + "/" + id;
+            axios.get(gethospitalsInfor)
+                .then(res => {
+                    if (res.statusText === "OK") {
+                        benhvienInfo = res.data;
+                        // 3. điền dữ liệu lấy đc từ api vào trong form
+                        document.querySelector('[name="name"]').value = benhvienInfo.name;
+                        document.querySelector('[name="logo"]').value = benhvienInfo.logo;
+                        document.querySelector('[name="address"]').value = benhvienInfo.address;
+                        document.querySelector('[name="bed_number"]').value = benhvienInfo.bed_number;
+                    }
+                })
+            }
+
+        function edithospitals() {
+
+            const name = document.querySelector('[name="name"]').value;
+            const logo = document.querySelector('[name="logo"]').value;
+            const address = document.querySelector('[name="address"]').value;
+            const bed_number = document.querySelector('[name="bed_number"]').value;
+            benhvienInfo.name = name;
+            benhvienInfo.logo = logo;
+            benhvienInfo.address = address;
+            benhvienInfo.bed_number = bed_number;
+            // gửi request lên mockapi để thêm bệnh viện
+            const updatehospitalsUrl = apiUrl + "/" + id;
+            axios.put(updatehospitalsUrl, benhvienInfo)
+                .then(data => {
+                    if (data.statusText === "OK") {
+                        window.location.href = 'index.html';
+                    }
+                })
+            return false;
+        }
+    </script>
+</body>
+
+</html>
