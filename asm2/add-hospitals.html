@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm mới Bệnh Viện</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
-        [data-type="validator-error"]{
+        [data-type="validator-error"] {
             color: red;
         }
-        
     </style>
 </head>
+
 <body>
     <!-- form tạo mới hotel -->
     <div class="container">
@@ -49,15 +51,15 @@
     <script src="./js/js-form-validator.min.js"></script>
     <script>
         const apiUrl = 'https://5f36249d5b91f60016ca55f8.mockapi.io/hospitals';
-        var validator = new Validator(document.querySelector('#add-hospitals-form'), function(err, res){
-            if(res === true){
+        var validator = new Validator(document.querySelector('#add-hospitals-form'), function (err, res) {
+            if (res === true) {
                 addhospitals();
             }
 
             return false;
         }, {
             rules: {
-                checkImgUrl: function(value){
+                checkImgUrl: function (value) {
                     return (/\.(gif|jpe?g|tiff|png|webp|bmp)$/i).test(value);
                 }
             },
@@ -79,7 +81,7 @@
             }
         });
 
-        function addhospitals(){
+        function addhospitals() {
             const name = document.querySelector('[name="name"]').value;
             const logo = document.querySelector('[name="logo"]').value;
             const address = document.querySelector('[name="address"]').value;
@@ -88,18 +90,19 @@
                 name: name,
                 logo: logo,
                 address: address,
-                bed_number:bed_number,
+                bed_number: bed_number,
             };
             // gửi request lên mockapi để thêm bệnh viện
             axios.post(apiUrl, requestObj)
-            .then(data => {
-                if(data.statusText === "Created"){
-                    window.location.href = 'index.html';
-                }
-            })
+                .then(data => {
+                    if (data.statusText === "Created") {
+                        window.location.href = 'index.html';
+                    }
+                })
         }
 
-        
+
     </script>
 </body>
+
 </html>
