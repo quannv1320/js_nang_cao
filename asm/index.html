@@ -3,55 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Polyshop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body>
-    <div class="header">
-        <ul class="menu"></ul>
-    </div>
-    <div class="content">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên danh mục</th>
-                    <th>
-                        <a href="create_cate.html" class="btn btn-success">Tạo mới</a>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
+    <header class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Polyshop</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Home</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- <main class="container-fluid">
+        <h2 class="text-info">Sản phẩm</h2>
+        <div class="row">
+            <div class="col-3">
+                <div class="card" style="width: 100%;">
+                    <img src="https://mivietnam.vn/wp-content/uploads/2020/12/dien-thoai-xiaomi-mi-10t-pro-avarta-377x470.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">Xiaomi Mi 10T Pro 5G</h5>
+                      <p>Giá: 12000000đ</p>
+                      <p>Hãng sản xuất: Xiaomi</p>
+                      <a href="javascript:;" class="btn btn-warning">Mua ngay</a>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </main> -->
 
-            </tbody>
-        </table>
-    </div>
-
+    <script src="./public/js/common.js"></script>
     <script>
-        //lấy danh sách danh mục
-        const apiUrl = "http://localhost:3000/";
-        fetch(`${apiUrl}Categories`)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (cates) {
-            //dùng vòng lặp để add thẻ html vào ul có class là menu
-            console.log(cates);
-            var content = ``;
-            cates.forEach(item => {
-                content += `<tr>
-                                <td>${item.id}</td>
-                                <td>${item.name}</td>
-                                <td>
-                                    <a href="" class="btn btn-primary">Sửa</a>
-                                    <a href="" class="btn btn-danger">Xóa</a>   
-                                </td>
-                            </tr>`
-            });
-            document.querySelector('tbody').innerHTML = content;
-        })
+        util.getMenu();
     </script>
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

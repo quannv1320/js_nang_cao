@@ -9,16 +9,8 @@
       "name": "Apple"
     },
     {
-      "name": "Nokia",
+      "name": "Samsung",
       "id": 3
-    },
-    {
-      "name": "Vertu",
-      "id": 4
-    },
-    {
-      "name": "China",
-      "id": 5
     }
   ],
   "products": [
@@ -42,10 +34,10 @@
   "orders": [
     {
       "id": 1,
-      "customer_name": "Trần Hữu Thiện",
+      "customer_name": "Nguyễn Văn Quân",
       "customer_address": "Hà Nội",
-      "customer_email": "thienth@fpt.edu.vn",
-      "customer_phone_number": "0987654321",
+      "customer_email": "quannv1320@fpt.edu.vn",
+      "customer_phone_number": "0977290289",
       "created_date": "",
       "status": 1
     }
