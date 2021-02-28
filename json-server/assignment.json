@@ -11,6 +11,10 @@
     {
       "name": "Samsung",
       "id": 3
+    },
+    {
+      "name": "Nokia",
+      "id": 4
     }
   ],
   "products": [
@@ -25,6 +29,38 @@
     {
       "id": 2,
       "name": "Xiaomi Redmi Note 9 Pro",
+      "categoryId": 2,
+      "price": 6490000,
+      "detail": "",
+      "image": "https://mivietnam.vn/wp-content/uploads/2020/12/dien-thoai-xiaomi-redmi-note-9-avarta14.jpg"
+    },
+    {
+      "id": 3,
+      "name": "iPhone 12 Pro Max",
+      "categoryId": 2,
+      "price": 6490000,
+      "detail": "",
+      "image": "https://mivietnam.vn/wp-content/uploads/2020/12/dien-thoai-xiaomi-redmi-note-9-avarta14.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Nokia pro 2020",
+      "categoryId": 2,
+      "price": 6490000,
+      "detail": "",
+      "image": "https://mivietnam.vn/wp-content/uploads/2020/12/dien-thoai-xiaomi-redmi-note-9-avarta14.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Xiaomi 2 Max",
+      "categoryId": 2,
+      "price": 6490000,
+      "detail": "",
+      "image": "https://mivietnam.vn/wp-content/uploads/2020/12/dien-thoai-xiaomi-redmi-note-9-avarta14.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Samsung node 15",
       "categoryId": 2,
       "price": 6490000,
       "detail": "",

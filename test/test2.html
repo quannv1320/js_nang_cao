@@ -1,0 +1,10 @@
+<script>
+var str = "hello world!";
+var arr = str.split('');
+var result = _.map(arr, function(val, ind){
+if(ind == 0 || arr[ind - 1] == ' '){
+return val.toUpperCase();
+}
+return val;
+});
+</script>
