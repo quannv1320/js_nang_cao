@@ -1,0 +1,127 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial;
+    width: 1200px;
+    margin: 0px auto;
+}
+.menu{
+    background: #009933;
+    margin-bottom: 10px;
+}
+.menu ul{
+    list-style: none;
+}
+.menu ul li{
+    text-align: center;
+    display: inline-table;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    position: relative;
+}
+.menu ul li a{
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+    color: white;
+}
+.menu ul li a:hover{
+    background: #f1f1f1;
+    color: red;
+}
+.menu ul li .sub-menu{
+	display: none;
+	background: limegreen ;
+	position: absolute;
+}
+.menu ul li .sub-menu li{
+	border-bottom: 1px solid white;
+}
+
+.menu ul li:hover .sub-menu{
+	display: block
+}
+.form1{
+	float: right;
+	margin-top: -34px;
+	margin-right: 78px;
+}
+.form1 button{
+    border: 1px;
+    background: #009933;
+	float: right;
+	color: white;
+    padding: 7px;
+    width: 25px;
+}
+.form1 input[type=text]{
+	padding: 5px;
+	border: none;
+	font-size: 16px;
+	font-family: sans-serif
+}
+
+
+.main .left{
+    width: 150px;
+    float: left;
+}
+
+.main .mid{
+    width: 625px;
+    float: left;
+    margin-left: 20px;
+}
+.lienhe{
+    height: 150px;
+}
+.thongtin{
+    margin-bottom: 25px;
+    margin-top: 25px;
+}
+.thongtin input{
+    height: 35px;
+    width: 485px;
+    border-radius: 3px;
+    padding: 5px;
+}
+.thongtin button{
+    width: 75px;
+    height: 32px;
+    background: #009933;
+    color: white;
+    font-weight: bold;
+}
+
+.right {
+    float: right;
+    width: 400px;
+    background: rosybrown;
+}
+
+.footer{
+    margin-top: 20px;
+    height: 100px;
+    clear: both;
+    background: #009933;
+}
+.footer .left{
+    padding: 10px;
+    float: left;
+}
+.footer .left p{
+    font-weight: bold;
+}
+.footer .right{
+    font-weight: bold;
+    color: white;
+    float: right;
+    width: 287px;
+    margin-top: 12px;
+    margin-right: -1px;
+    background: #009933;
+}

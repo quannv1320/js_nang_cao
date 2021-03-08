@@ -199,7 +199,7 @@
                     console.log(id);
                     var product_api = "https://603db62f48171b0017b2d899.mockapi.io/categories" + "/" + id + "/products";
                     console.log(product_api);
-                    // 2. gửi yêu cầu lên mockapi để lấy thông tin của phòng về  	
+                    // 2. gửi yêu cầu lên mockapi để lấy thông tin về
                     axios.get(product_api)
                         .then(res => {
                             if (res.statusText === "OK") {
@@ -211,7 +211,7 @@
                                                 <td>${element.id}</td>
                                                 <td>${element.name}</td>
                                                 <td>
-                                                    <img src="${element.image}" width="100" />    
+                                                    <img src="${element.image}" width="70" />    
                                                 </td>
                                                 <td>${element.price}</td>
                                                 <td>${element.categoryId}</td>

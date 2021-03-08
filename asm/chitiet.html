@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/chitiet.css">
+    <title>Document</title>
+</head>
+<body onload="getInforPro()">
+    <div class="banner">
+        <a href="index.html"><img src="images/info.png" alt="" width="1200px"></a>
+    </div>
+    <div class="menu">
+        <ul>
+            <li><a href="index.html"><strong>TRANG CHỦ</strong></a></li>
+            <li><a href="dienthoai.html"><strong>ĐIỆN THOẠI</strong></a>
+                <ul class="sub-menu">
+					<li><a href="#">iPhone 6-6s-plus</a></li>
+					<li><a href="#">iPhone 7-8-plus</a></li>
+					<li><a href="#">iPhone X-XR</a></li>
+                    <li><a href="#">iPhone XSmax</a></li>
+                    <li><a href="#">iPhone 11-11pro</a></li>
+				</ul>
+            </li>
+            <li><a href="baohanh.html"><strong>BẢO HÀNH</strong></a></li>
+            <li><a href="thuthuat.html"><strong>THỦ THUẬT</strong></a></li>
+            <li><a href="tintuc.html"><strong>TIN TỨC</strong></a></li>
+            <li><a href="lienhe.html"><strong>LIÊN HỆ</strong></a></li>
+            <li><a href="./admin/index.html"><strong>QUẢN TRỊ</strong></a></li>
+        </ul>
+        <div class="form">
+            <input type="text" placeholder="Tên sản phẩm...">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+
+    <div class="left">
+        <div class="product">
+            <div class="image">
+                <img src="./images/iphone11pro.jpg" width="400">
+            </div>
+            <div class="info">
+                <h2>Tên sản phẩm: <span id="name"></span></h2>
+                <br>
+                <h2>Giá: <span id="price"></span><span class="price"> $</span></h2>
+                <br>
+                <button><h3>Mua ngay</h3></button>
+                <br>
+                <br>
+                <p>Cấu hình: </p>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <img src="images/quangcao.jpg" alt="" width="240">
+    </div>
+
+    <div class="footer">
+            <div class="left">
+                <h3>Cửa hàng điện thoại di động <label style="color: #f47532;background: white;border-radius: 7px;">Q-Mobile</label></h3>
+                <p>Địa chỉ: <lable style="color: white;">133 Hai Bà Trưng - Hà Nội</lable>
+                    <br>
+                    Điện thoại: <lable style="color: white;">0977290289 - 0389387289</lable>
+                </p>
+            </div>
+            <div class="right">
+                <p>Copyright © 2019 Q-MOBILE 
+                    <br>Thiết kế và phát triển bởi QUANNV</p>
+            </div>
+        </div>
+
+
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        function getInforPro() {
+            //lấy id trên đường dẫn
+            const urlParams = new URLSearchParams(window.location.search);
+            id = urlParams.get('id');
+            // console.log(id);
+            // 2. gửi request lên mock api để lấy thông tin cũ về
+            const getProInfoUrl = "https://603db62f48171b0017b2d899.mockapi.io/categories/1/products" + "/" + id;
+            axios.get(getProInfoUrl)
+                .then(res => {
+                    if (res.statusText === "OK") {
+                        proInfo = res.data;
+                        // 3. điền dữ liệu
+                        document.querySelector('#name').innerHTML = proInfo.name;
+                        // document.querySelector('src').innerHTML = proInfo.image;
+                        document.querySelector('#price').innerHTML = proInfo.price;
+                    }
+                })
+        }
+    </script>
+</body>
+</html>

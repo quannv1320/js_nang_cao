@@ -1,0 +1,217 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial;
+    width: 1200px;
+    margin: 0px auto;
+}
+.menu{
+    background: #009933;
+    margin-bottom: 10px;
+}
+.menu ul{
+    list-style: none;
+}
+.menu ul li{
+    text-align: center;
+    display: inline-table;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    position: relative;
+}
+.menu ul li a{
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+    color: white;
+}
+.menu ul li a:hover{
+    background: #f1f1f1;
+    color: red;
+}
+.menu ul li .sub-menu{
+	display: none;
+	background: limegreen ;
+	position: absolute;
+}
+.menu ul li .sub-menu li{
+	border-bottom: 1px solid white;
+}
+
+.menu ul li:hover .sub-menu{
+	display: block
+}
+.form{
+	float: right;
+	margin-top: -34px;
+	margin-right: 78px;
+}
+.form button{
+    border: 1px;
+    background: #009933;
+	float: right;
+	color: white;
+    padding: 7px;
+    width: 25px;
+}
+.form input[type=text]{
+	padding: 5px;
+	border: none;
+	font-size: 16px;
+	font-family: sans-serif
+}
+
+.left{
+    margin-top: 10px;
+    width: 230px;
+    float: left;
+}
+.left p{
+    background: #009933;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    border: 1px solid #009933;
+    height: 35px;
+    line-height: 35px;
+    padding-right: 5px;
+}
+.left p i{
+    padding: 0 4px;
+}
+.left ul {
+    border: 1px solid black;
+    margin-top: 7px;
+}
+.left ul li{
+    list-style: none;
+    padding: 10px 10px 10px 10px;
+}
+.left ul li a{
+    text-decoration: none;
+    color: black;
+    padding-left: 10px;
+}
+.left ul li a:hover{
+    color: red;
+}
+
+.right{
+    width: 739px;
+    float: left;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.right .top{
+    line-height: 35px;
+    height: 35px;
+    background: #009933;
+}
+.right .top label{
+    padding:5px;
+    color: white;
+    font-weight: bold;
+}
+.right .top select{
+    height: 25px;
+    width: 170px;
+}
+.right .top button{
+    height: 25px;
+    width: 120px;
+
+}
+.right .bot{
+    height: 832px;
+}
+.right .bot .product{
+    width: 23%;
+    float: left;
+    margin: 7px;
+    border: 1px solid black;
+}
+.right .bot .product img{
+    margin-left: 13px;
+}
+.right .bot .product h3{
+    text-align: center;
+    margin-bottom: 6px;
+}
+.right .bot .product p{
+    text-align: center;
+    color: red;
+    margin-bottom: 10px;
+}
+.right .bot .product button{
+    width: 90px;
+    height: 29px;
+    margin-left: 42px;
+    border: 10px;
+    border-radius: 20px;
+    background: #009933;
+    color: white;
+    margin-bottom: 10px;
+}
+.right .bot .product button:hover{
+    background: yellow;
+    color: black;
+    font-weight: bold;
+}
+.right .next{
+    margin-left: 7px;
+    width: 722px;
+    height: 40px;
+}
+.right .next ul{
+    margin-left: 279px;
+}
+.right .next ul li{
+    background: #009933;
+    margin: 5px;
+    padding: 6px;
+    float: left;
+    list-style: none;
+    border: 1px solid black;
+}
+.right .next ul li a{
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+.right .next ul li:hover{
+    color: black;
+    background: yellow;
+}
+.quangcao{
+    width: 201px;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+
+.footer{
+    margin-top: 20px;
+    height: 100px;
+    clear: both;
+    background: #009933;
+}
+.footer .left{
+    width: 450px;
+}
+.footer .left p{
+    font-weight: bold;
+}
+.footer .right{
+    font-weight: bold;
+    color: white;
+    float: right;
+    width: 287px;
+    margin-top: 10px;
+    margin-right: -10px;
+}
+

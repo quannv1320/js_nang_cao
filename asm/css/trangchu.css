@@ -1,0 +1,221 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial;
+    width: 1200px;
+    margin: 0px auto;
+}
+.menu{
+    background: #009933;
+    margin-bottom: 10px;
+}
+.menu ul{
+    list-style: none;
+}
+.menu ul li{
+    text-align: center;
+    display: inline-table;
+    height: 40px;
+    width: 120px;
+    line-height: 40px;
+    position: relative;
+}
+.menu ul li a{
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+    color: white;
+}
+.menu ul li a:hover{
+    background: #f1f1f1;
+    color: red;
+}
+.menu ul li .sub-menu{
+	display: none;
+	background: limegreen ;
+	position: absolute;
+}
+.menu ul li .sub-menu li{
+	border-bottom: 1px solid white;
+}
+
+.menu ul li:hover .sub-menu{
+	display: block
+}
+.form{
+	float: right;
+	margin-top: -34px;
+	margin-right: 78px;
+}
+.form button{
+    border: 1px;
+    background: #009933;
+	float: right;
+	color: white;
+    padding: 7px;
+    width: 25px;
+}
+.form input[type=text]{
+	padding: 5px;
+	border: none;
+	font-size: 16px;
+	font-family: sans-serif
+}
+
+.banner_menu{
+    margin-top: -59px;
+    width: 713px;
+    background: #009933;
+    margin-bottom: 10px;
+}
+.banner_menu ul{
+    list-style: none;
+}
+.banner_menu ul li{
+    text-align: center;
+    display: inline-table;
+    width: 139px;
+    line-height: 40px;
+    position: relative;
+    border-left: 1px solid white;
+}
+.banner_menu ul li a{
+    font-size: 13px;
+    text-decoration: none;
+    display: block;
+    color: white;
+    height: 55px;
+    line-height: 20px;
+    padding-top: 7px;
+}
+.banner_menu ul li a:hover{
+    background: #f1f1f1;
+    color: red;
+}
+
+.left{
+    width: 961px;
+    float: left;
+}
+.product_hot{
+    margin-bottom: 10px;
+    border-top: 1px solid limegreen;
+    border-left: 1px solid limegreen;
+}
+
+.product{
+    width: 25%;
+    padding: 10px;
+    text-align: justify;
+    float: left;
+    border-right: 1px solid limegreen;
+    border-bottom: 1px solid limegreen;
+}
+.product img{
+    margin-left: 36px;
+}
+.product p{
+    padding: 5px 0;
+}
+.clear{
+    clear: both;
+}
+
+.product h3{
+    text-align: center
+}
+.product p{
+    text-align: center;
+    color: red;
+}
+a{
+    text-decoration: none;
+}
+.product button{
+    width: 70px;
+    height: 25px;
+    margin-left: 62px;
+    width: 100px;
+    height: 30px;
+    border: 10px;
+    border-radius: 20px;
+    background: #009933;
+    color: white;
+}
+.product button:hover{
+    background: yellow;
+    color: black;
+    font-weight: bold;
+}
+
+.phukien{
+    margin-bottom: 10px;
+    border-top: 1px solid limegreen;
+    border-left: 1px solid limegreen;
+}
+
+.phukienzin{
+    width: 20%;
+    padding: 10px;
+    text-align: justify;
+    float: left;
+    border-right: 1px solid limegreen;
+    border-bottom: 1px solid limegreen;
+}
+.phukienzin h3{
+    text-align: center;
+}
+.phukienzin button{
+    width: 70px;
+    height: 25px;
+    margin-left: 39px;
+    width: 100px;
+    height: 30px;
+    border: 10px;
+    border-radius: 20px;
+    background: #009933;
+    color: white;
+}
+.phukienzin button:hover{
+    background: yellow;
+    color: black;
+    font-weight: bold;
+}
+.phukienzin p{
+    text-align: center;
+    color: red;
+}
+.phukien .clear{
+    clear: both;
+}
+
+.right{
+    margin-left: 19px;
+    width: 220px;
+    float: left;
+}
+
+.footer{
+    margin-top: 20px;
+    height: 100px;
+    clear: both;
+    background: #009933;
+}
+.footer .left{
+    padding: 10px;
+    float: left;
+}
+.footer .left p{
+    font-weight: bold;
+}
+.footer .right{
+    font-weight: bold;
+    color: white;
+    float: right;
+    width: 287px;
+    margin-top: -68px;
+    margin-right: -10px;
+}

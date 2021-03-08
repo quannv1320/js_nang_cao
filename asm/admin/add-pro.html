@@ -19,7 +19,12 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <style>
+        [data-type="validator-error"]{
+            color: red;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -166,22 +171,22 @@
                     <h2>Thêm mới sản phẩm</h2>
                     <div class="row">
                         <div class="col-6 offset-3">
-                            <form onsubmit="return addPro(event)">
+                            <form id="add-pro-form" onsubmit="return addPro(event)">
                                 <div class="form-group">
                                     <label for="">Tên sản phẩm</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input type="text" name="name" class="form-control" data-rule="required|minlength-4">
                                 </div>
                                 <div class="form-group">
                                     <label for="">ảnh</label>
-                                    <input type="text" name="image" class="form-control">
+                                    <input type="text" name="image" class="form-control" data-rule="required|minlength-4">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Giá</label>
-                                    <input type="text" name="price" class="form-control">
+                                    <input type="text" name="price" class="form-control" data-rule="required|minlength-4">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Danh mục</label>
-                                    <select name="cate_id" id="" class="form-control">
+                                    <select name="cate_id" id="" class="form-control" data-rule="required|minlength-4">
                                         
                                     </select>
                                 </div>
@@ -201,10 +206,32 @@
                         </div>
                     </div>
                 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-            
+                <script src="./js/js-form-validator.min.js"></script>
                 <script>
                     const category_api = "https://603db62f48171b0017b2d899.mockapi.io/categories";
                     
+                    var validator = new Validator(document.querySelector('#add-pro-form'), function(err, res) {
+                            if(res === true){
+                                addPro();
+                            }
+                            return false;
+                        },
+                        {
+                            messages: {
+                                en: {
+                                    required: {
+                                    empty: 'Không được để trống',
+                                    icorrect: 'Nhập sai thông thin'
+                                    },
+                                    minlength: {
+                                        empty: 'Hãy nhập tối thiểu {0} ký tự',
+                                        incorrect: 'Hãy nhập tối thiểu {0} ký tự'
+                                    }
+                                }
+                            }
+                        });
+
+
                     axios.get(category_api)
                         .then(res => {
                             if (res.statusText === "OK") {

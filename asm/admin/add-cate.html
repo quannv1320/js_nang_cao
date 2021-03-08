@@ -20,6 +20,13 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+    <style>
+        [data-type="validator-error"]{
+            color: red;
+            font-size: 20px;
+        }
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -129,8 +136,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Quân NV</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -164,56 +170,78 @@
                 <div class="container-fluid">
 
                     <h2>Thêm mới danh mục</h2>
-        <div class="row">
-            <div class="col-6 offset-3">
-                <form onsubmit="return addHotel(event)">
-                    <div class="form-group">
-                        <label for="">Tên danh mục</label>
-                        <input type="text" name="name" class="form-control">
+                    <div class="row">
+                        <div class="col-6 offset-3">
+                            <form id="add-cate-form" onsubmit="return addCate(event)">
+                                <div class="form-group">
+                                    <label for="">Tên danh mục</label>
+                                    <input type="text" name="name" class="form-control" data-rule="required|minlength-4">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Logo</label>
+                                    <input type="text" name="logo" class="form-control" data-rule="required|minlength-4">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Miêu tả</label>
+                                    <input type="text" name="description" class="form-control" data-rule="required|minlength-4">
+                                </div>
+                                <div class="form-group text-center">
+                                    <input class="btn btn-sm btn-primary" type="submit" value="Lưu">&nbsp;
+                                    <a href="index.html" class="btn btn-sm btn-danger">Huỷ</a>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="">Logo</label>
-                        <input type="text" name="logo" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Miêu tả</label>
-                        <input type="text" name="description" class="form-control">
-                    </div>
-                    <div class="form-group text-center">
-                        <input class="btn btn-sm btn-primary" type="submit" value="Lưu">&nbsp;
-                        <a href="index.html" class="btn btn-sm btn-danger">Huỷ</a>
-                    </div>
-                </form>
-            </div>
-        </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                    <script src="./js/js-form-validator.min.js"></script>
+                    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                    <script>
+                        const category_api = "https://603db62f48171b0017b2d899.mockapi.io/categories";
+                        
+                        var validator = new Validator(document.querySelector('#add-cate-form'), function(err, res) {
+                            if(res === true){
+                                addCate();
+                            }
+                            return false;
+                        },
+                        {
+                            messages: {
+                                en: {
+                                    required: {
+                                    empty: 'Không được để trống',
+                                    icorrect: 'Nhập sai thông thin'
+                                    },
+                                    minlength: {
+                                        empty: 'Hãy nhập tối thiểu {0} ký tự',
+                                        incorrect: 'Hãy nhập tối thiểu {0} ký tự'
+                                    }
+                                }
+                            }
+                        });
 
-    <script>
-        const category_api = "https://603db62f48171b0017b2d899.mockapi.io/categories";
-        function addHotel(e) {
+                        function addCate(e) {
 
-            e.preventDefault();
-            var name = document.querySelector('[name="name"]').value;
-            var logo = document.querySelector('[name="logo"]').value;
-            var description = document.querySelector('[name="description"]').value;
+                            e.preventDefault();
+                            var name = document.querySelector('[name="name"]').value;
+                            var logo = document.querySelector('[name="logo"]').value;
+                            var description = document.querySelector('[name="description"]').value;
 
-            var requestObj = {
-                name: name,
-                logo: logo,
-                description: description
-            };
-            console.log(requestObj);
-            // gửi request lên mockapi
-            axios.post(category_api, requestObj)
-                .then(data => {
-                    if (data.statusText === "Created") {
-                        window.location.href = 'index.html';
-                    }
-                })
-            return false;
+                            var requestObj = {
+                                name: name,
+                                logo: logo,
+                                description: description
+                            };
+                            console.log(requestObj);
+                            // gửi request lên mockapi
+                            axios.post(category_api, requestObj)
+                                .then(data => {
+                                    if (data.statusText === "Created") {
+                                        window.location.href = 'index.html';
+                                    }
+                                })
+                            return false;
 
-        }
-    </script>
+                        }
+                    </script>
 
                 </div>
                 <!-- /.container-fluid -->
