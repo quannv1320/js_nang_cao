@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body onload="getInfoCate()">
+    <div class="container">
+        <h2>Thêm mới khách sạn</h2>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form onsubmit="return saveEditCate(event)">
+                    <div class="form-group">
+                        <label for="">Tên danh mục</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Logo</label>
+                        <input type="text" name="logo" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Miêu tả</label>
+                        <input type="text" name="description" class="form-control">
+                    </div>
+                    <div class="form-group text-center">
+                        <input class="btn btn-sm btn-primary" type="submit" value="Lưu">&nbsp;
+                        <a href="index.html" class="btn btn-sm btn-danger">Huỷ</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        const category_api = "https://603db62f48171b0017b2d899.mockapi.io/categories";
+
+
+        function getInfoCate() {
+            // 1. lấy tham số id trên đường dẫn
+            const urlParams = new URLSearchParams(window.location.search);
+            id = urlParams.get('id');
+            console.log(id);
+            // 2. gửi request lên mock api để lấy thông tin của khách sạn về
+            const getCateInfor = category_api + "/" + id;
+            axios.get(getCateInfor)
+                .then(res => {
+                    if (res.statusText === "OK") {
+                        cateInfo = res.data;
+                        // 3. điền dữ liệu lấy đc từ api vào trong form
+                        document.querySelector('[name="name"]').value = cateInfo.name;
+                        document.querySelector('[name="logo"]').value = cateInfo.logo;
+                        document.querySelector('[name="description"]').value = cateInfo.description;
+                    }
+                })
+        }
+
+        function saveEditCate(e) {
+            e.preventDefault();
+            const name = document.querySelector('[name="name"]').value;
+            const logo = document.querySelector('[name="logo"]').value;
+            const description = document.querySelector('[name="description"]').value;
+            
+            cateInfo.name = name;
+            cateInfo.logo = logo;
+            cateInfo.description = description;
+
+            // gửi request lên mockapi để thêm bệnh viện
+            const editCateUrl = category_api + "/" + id;
+            axios.put(editCateUrl, cateInfo)
+                .then(data => {
+                    if (data.statusText === "OK") {
+                        window.location.href = 'index.html';
+                    }
+                })
+            return false;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body  onload="getProInfor()">
+    <div class="container">
+        <h2>Cập nhật sản phẩm</h2>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <form onsubmit="return addPro(event)">
+                    <div class="form-group">
+                        <label for="">Tên sản phẩm</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">ảnh</label>
+                        <input type="text" name="image" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Giá</label>
+                        <input type="text" name="price" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Danh mục</label>
+                        <select name="cate_id" id="" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Số lượng</label>
+                        <input type="text" name="quantity" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Miêu tả</label>
+                        <input type="text" name="description" class="form-control">
+                    </div>
+                    <div class="form-group text-center">
+                        <input class="btn btn-sm btn-primary" type="submit" value="Lưu">&nbsp;
+                        <a href="index.html" class="btn btn-sm btn-danger">Huỷ</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const category_api = "https://603db62f48171b0017b2d899.mockapi.io/categories";
+        
+        axios.get(category_api)
+            .then(res => {
+                if (res.statusText === "OK") {
+                    document.querySelector('select[name = "cate_id"]').innerHTML = '';
+                    var data = res.data;
+                    var content = ``;
+                    data.forEach(element => {
+                        content += `<option id="cate_${element.id}" value="${element.id}">${element.name} </option>`;
+                    });
+                    document.querySelector('select[name="cate_id"]').innerHTML = content;
+                }
+            })
+        
+            var proInfo = {};
+            var id = null;
+
+        function getProInfor() {
+            // 1. lấy tham số id trên đường dẫn
+            const urlParams = new URLSearchParams(window.location.search);
+            id = urlParams.get('id');
+            // console.log(id);
+            // 2. gửi request lên mock api để lấy thông tin của phòng về
+            const getProInfoUrl = category_api + "/" + id + "/products" + "/" + id;
+            axios.get(getProInfoUrl)
+                .then(res => {
+                    if (res.statusText === "OK") {
+                        proInfo = res.data;
+                        // 3. điền dữ liệu lấy đc từ api vào trong form 
+                        document.querySelector('[name="name"]').value = proInfo.name;
+                        document.querySelector('[name="image"]').value = proInfo.image;
+                        document.querySelector('[name="price"]').value = proInfo.price;
+                        // document.querySelector('[name="cate_id"]').value = proInfo.cate_id;
+                        document.querySelector('[name="quantity"]').value = proInfo.quantity;
+                        document.querySelector('[name="description"]').value = proInfo.description;
+                    }
+                })
+        }
+
+        
+        function addPro(e) {
+
+            e.preventDefault();
+            var name = document.querySelector('[name="name"]').value;
+            var image = document.querySelector('[name="image"]').value;
+            var price = document.querySelector('[name="price"]').value;
+            var cate_id = document.querySelector('[name="cate_id"]').value;
+            var quantity = document.querySelector('[name="quantity"]').value;
+            var description = document.querySelector('[name="description"]').value;
+
+            proInfo.name = name;
+            proInfo.image = image;
+            proInfo.price = price;
+            proInfo.cate_id = cate_id;
+            proInfo.quantity = quantity;
+            proInfo.description = description;
+
+            // gửi request lên mockapi
+            // axios.post(category_api + "/" + cate_id + "/products", requestObj)
+            //     .then(data => {
+            //         if (data.statusText === "Created") {
+            //             window.location.href = 'list-pro.html?id=' + cate_id;
+            //         }
+            //     })
+            // return false;
+
+            // gửi request lên mockapi để thêm bệnh viện
+            const editProUrl = category_api + "/" + cate_id + "/products";
+            axios.put(editProUrl, proInfo)
+                .then(data => {
+                    if (data.statusText === "OK") {
+                        window.location.href = 'list-pro.html?id=' + cate_id;
+                    }
+                })
+            return false;
+
+        }
+    </script>
+</body>
+
+</html>
